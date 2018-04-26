@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dependencies>
+   <includePath signature="/I../../../../../usr/local/include /I../../../../../usr/include/jsoncpp">
+      <source file="../../../../../../../usr/include/jsoncpp/json/version.h" lastModified="155d0ea0e80">
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/allocator.h" lastModified="155d0ea1650">
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/server/abstractserverconnector.h" lastModified="160c1540448">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/iclientconnectionhandler.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/server/requesthandlerfactory.h" lastModified="160c1540060">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/iprocedureinvokationhandler.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/iclientconnectionhandler.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/common/jsonparser.h" lastModified="16289045bb8">
+         <sysinclude file="../../../../../../../usr/include/jsoncpp/json/json.h"/>
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/forwards.h" lastModified="155d0ea0e80">
+         <include file="../../../../../../../usr/include/jsoncpp/json/config.h"/>
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/value.h" lastModified="155d0ea25f0">
+         <include file="../../../../../../../usr/include/jsoncpp/json/forwards.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/server.h" lastModified="160c1540060">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/abstractserver.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/common/exception.h"/>
+      </source>
+      <source file="../../src/cpp/server/Waypoint.hpp" lastModified="162985fc908">
+         <sysinclude file="../../../../../../../usr/include/jsoncpp/json/value.h"/>
+      </source>
+      <source file="../../src/cpp/server/waypointserverstub.h" lastModified="1629c3f9b48">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server.h"/>
+      </source>
+      <source file="../../src/cpp/server/Waypoint.cpp" lastModified="162985fadb0">
+         <include file="../../src/cpp/server/Waypoint.hpp"/>
+         <sysinclude file="../../../../../../../usr/include/stdlib.h"/>
+         <sysinclude file="../../../../../../../usr/include/jsoncpp/json/json.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/common/errors.h" lastModified="160c1540830">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/common/jsonparser.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/server/connectors/httpserver.h" lastModified="160c15417d0">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/abstractserverconnector.h"/>
+         <sysinclude file="../../../../../../../usr/include/stdint.h"/>
+         <sysinclude file="../../../../../../../usr/include/unistd.h"/>
+         <sysinclude file="../../../../../../../usr/include/microhttpd.h"/>
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/reader.h" lastModified="155d0ea2208">
+         <include file="../../../../../../../usr/include/jsoncpp/json/features.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/value.h"/>
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/json.h" lastModified="155d0ea0e80">
+         <include file="../../../../../../../usr/include/jsoncpp/json/autolink.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/value.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/reader.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/writer.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/features.h"/>
+      </source>
+      <source file="../../src/cpp/server/WaypointCollection.hpp" lastModified="16292844608">
+         <include file="../../src/cpp/server/Waypoint.hpp"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/json.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/common/procedure.h" lastModified="160c1540830">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/common/jsonparser.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/common/specification.h"/>
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/writer.h" lastModified="155d0ea1a38">
+         <include file="../../../../../../../usr/include/jsoncpp/json/value.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/common/specification.h" lastModified="160c1540060">
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/server/iprocedureinvokationhandler.h" lastModified="160c1540060">
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/features.h" lastModified="155d0ea0e80">
+         <include file="../../../../../../../usr/include/jsoncpp/json/forwards.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/common/exception.h" lastModified="160c1540c18">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/common/errors.h"/>
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/config.h" lastModified="155d0ea1a38">
+         <include file="../../../../../../../usr/include/jsoncpp/json/version.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/allocator.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/server/abstractserver.h" lastModified="160c1540c18">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/common/procedure.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/abstractserverconnector.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/iprocedureinvokationhandler.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/iclientconnectionhandler.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/requesthandlerfactory.h"/>
+      </source>
+      <source file="../../src/cpp/server/WaypointCollection.cpp" lastModified="1629bd87cd8">
+         <include file="../../src/cpp/server/WaypointCollection.hpp"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/connectors/httpserver.h"/>
+         <sysinclude file="../../../../../../../usr/include/stdlib.h"/>
+         <sysinclude file="../../../../../../../usr/include/stdio.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/server/iclientconnectionhandler.h" lastModified="160c1540448">
+      </source>
+      <source file="../../src/cpp/server/WaypointServer.cpp" lastModified="162933db6b0">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/server/connectors/httpserver.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/json.h"/>
+         <include file="../../src/cpp/server/waypointserverstub.h"/>
+         <include file="../../src/cpp/server/WaypointCollection.hpp"/>
+         <sysinclude file="../../../../../../../usr/include/stdio.h"/>
+         <sysinclude file="../../../../../../../usr/include/stdlib.h"/>
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/autolink.h" lastModified="155d0ea1268">
+         <include file="../../../../../../../usr/include/jsoncpp/json/config.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/autolink.h"/>
+      </source>
+   </includePath>
+</dependencies>

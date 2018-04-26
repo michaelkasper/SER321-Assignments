@@ -1,0 +1,70 @@
+Here are some command line operations for managing the packages installed on Debian Linux.
+
+To list all of the packages currently installed on you RPi do:
+dpkg-query -l
+
+To search for packages that you may want to install
+aptitude search text to search
+aptitude search ant
+aptitude search apache2
+apt-cache search apache2
+
+To install a package
+Search as above to find the package's full name. for example
+aptitude search jdk
+sudo apt-get install openjdk-9-jdk
+or
+sudo apt-get install oracle-java9-jdk
+You can use sudo apt-get install a-package-name to update a package also
+
+To remove a package and its configuration files
+sudo apt-get --purge remove oracle-java8-jdk
+
+To update the system (should be done periodically)
+sudo apt-get update
+sudo apt-get upgrade
+// and follow prompts during the update process. Primarily it will ask
+// whether you want to restart any updated servcies automatically.
+
+A web reference for listing installed packages:
+https://wiki.debian.org/ListInstalledPackages
+
+A web reference to a cheatsheet for apt-get commands
+http://www.cyberciti.biz/tips/linux-debian-package-management-cheat-sheet.html
+
+If your RPi is not able to connect to the internet, then the package
+management facilites will not work unless you separately download each package
+necessary to install (and all of its dependencies). You can place this in a special
+folder so they will be installed by the package manager. See the documentation on
+Aptitude. Without a package manager, installations commonly involve downloading
+the source for the package as a compressed tar file. For example, suppose you
+want to manually install the GNU Smalltalk programming language package.
+Providing you have already installed all of the pre-requisites, download
+the source from:
+http://smalltalk.gnu.org/download
+to get:
+smalltalk-2.0.11.tar.gz
+Then from the command line in the directory containing the gz file:
+tar -xf smalltalk-2.0.11.tar.gz
+This will create the directory smalltalk-2.0.11
+cd smalltalk-2.0.11/
+./configure
+make
+make check
+sudo make install
+
+These operations will configure the package to your RPi system, compile
+the implementation's source code, check that the compilation worked
+correctly, and then install it so that the Smalltalk tools are in your PATH.
+
+Other packages can be manually installed (Java-based, for example) by
+downloading the binary versions. Ant is a good example.
+Obtain the binary distribution for Ant from:
+http://ant.apache.org/bindownload.cgi
+to get the archive:
+apache-ant-1.9.4-bin.tar.gz
+From the directory into which you downloaded execute:
+tar -xf apache-ant-1.9.4-bin.tar.gz
+This will create the directory apache-ant-1.9.4
+Now add this directory's bin sub directory to your path since the bin
+directory contains ant's executable programs.

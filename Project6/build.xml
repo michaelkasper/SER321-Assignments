@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<project name="Ser321 Sample Browser for Student httpd server" default="targets">
+    <taskdef resource="cpptasks.tasks"/>
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+    <property name="src.dir" value="src"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="port.num" value="8080"/>
+    <property name="server.host" value="localhost"/>
+    <property name="classes.dir" value="classes"/>
+
+    <property environment="env"/>
+    <property name="ostype" value="${env.OSTYPE}"/>
+
+    <target name="targets">
+        <echo message="Targets are clean, prepare, build.server, build.client, generate.example.jar, generate.httpclient.jar, targets"/>
+        <echo message="base directory is: ${basedir}"/>
+        <echo message="execute sample with: java -cp classes ser321.http.client.BrowserStudent"/>
+        <echo message="execute your client with: java -cp classes ser321.http.client.Browser http://${server.host}:${port.num}/Ser321/index.html"/>
+        <echo message="execute your server with: java -cp classes ser321.http.server.HttpTCPServer ${port.num}"/>
+        <echo message="execute grader client with: java -jar ${lib.dir}/HttpClient.jar ${server.host} ${port.num} Ser321/index.html"/>
+    </target>
+
+    <path id="compile.classpath">
+        <pathelement location="${classes.dir}"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${classes.dir}" failonerror="false"/>
+        <delete dir="log" failonerror="false"/>
+        <delete dir="Cache" failonerror="false"/>
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="log"/>
+        <mkdir dir="Cache"/>
+        <copy todir="${classes.dir}/www">
+            <fileset dir="www" />
+        </copy>
+    </target>
+
+    <target name="build.server" depends="prepare"
+            description="Compile Java client sources">
+        <!-- Compile Java classes as necessary -->
+        <echo message="execute server: java -cp classes ser321.http.server.HttpTCPServer ${port.num}"/>
+        <javac srcdir="${src.dir}/Server"
+               destdir="${classes.dir}"
+               includeantruntime="false">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="build.client" depends="prepare"
+            description="Compile Java client sources">
+        <!-- Compile Java classes as necessary -->
+        <echo message="java client: java -cp classes ser321.http.client.HttpClient ${server.host} ${port.num} Ser321/index.html"/>
+        <javac srcdir="${src.dir}/Client"
+               destdir="${classes.dir}"
+               includeantruntime="false">
+            <classpath refid="compile.classpath"/>
+
+        </javac>
+    </target>
+
+    <target name="execute.browser" depends="build.client">
+        <java classname="Client.BrowserController" fork="yes"
+              dir="${basedir}">
+            <classpath refid="compile.classpath"/>
+            <arg value="${server.host}"/>
+            <arg value="${port.num}"/>
+        </java>
+    </target>
+
+
+    <target name="execute.server" depends="build.server">
+        <java classname="Server.WebServer" fork="yes"
+              dir="${basedir}">
+            <classpath refid="compile.classpath"/>
+            <arg value="${port.num}"/>
+        </java>
+    </target>
+
+
+</project>

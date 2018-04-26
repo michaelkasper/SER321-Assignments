@@ -1,0 +1,32 @@
+[
+    {   // getNames() --> json array of strings of waypoint names
+        "method": "get",
+        "params":["key"],
+        "returns":{ }
+    },
+    {   // getNames() --> json array of strings of waypoint names
+        "method": "getNames",
+        "params":[],
+        "returns":[""]
+    },
+    {   // removeWaypoint(string) --> jsonOfAStudent
+        "method": "remove",
+        "params":["key"],
+        "returns":true
+    },
+    {   // add(JsonOfAWaypoint) --> bool
+        "method": "add",
+        "params":[{ }],
+        "returns": true
+    },
+    {
+        "method": "saveToJsonFile",
+        "params":[ ],
+        "returns": true
+    },
+    {
+        "method": "resetFromJsonFile",
+        "params":[ ],
+        "returns": true
+    }
+]

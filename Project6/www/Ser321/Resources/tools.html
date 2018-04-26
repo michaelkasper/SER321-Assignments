@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>Ser321 Principles of Distributed Software Systems (Lindquist)</title>
+</head>
+<body bgcolor="#E0E0AF">
+<table border="2" width="100%">
+  <tr> 
+    <td height=95 width=23% bgcolor=#FFC20E> 
+      <div align=center><font size=6 color=#9B0033><b>Ser321</font></b></div>
+    </td>
+    <td height=95 width=77% class=TitleFont bgcolor=#9B0033> 
+      <div align=center><font size=6 color=#FFC20E><b>Principles of Distributed Software Systems</b></font></div>
+    </td>
+  </tr>
+</table>
+
+<H2><U>Miscellaneous Information and References:</U></H2>
+<UL>
+<li>Reference textbook for the course:
+     <b><u>Java Network Programming and Distributed Computing</b></u>
+     by Reilly and Reilly. Published by Addison-Wesley Professional.
+     <br> 
+  A pdf version of the textbook is typically available from a Web search. Here is the
+  <a href="http://www.davidreilly.com/jnpbook/">author's site for the book</a>.
+</li>
+<br>
+<li>Second textbook recommendation:
+   <a href="http://shop.oreilly.com/product/0636920028420.do">
+   Java Network Programming, 4th Edition</a> by Elliotte Rusty Harold.
+</li>
+<br>
+<li><b>Computing Environment</b>. You will be developing software to run on two machines
+    (computing environments) for the class. The development enviroment will be used for
+code development, and running clients. The development environment should be
+Debian Stretch (9.x) Linux running under Virtual Box on your laptop or desktop computer.
+The deployment machine will be Raspberry Pi also running Debian Stretch (9.x) Linux, and it
+    will not be used for code development, but will be used to run servers.
+    Some servers you'll be running on the Raspberry Pi are examples made available
+by the instructor, others, you will develop.
+To support course outcomes, the development and deployment
+    environments are Linux, and they should be configured so they can reach other via
+    the internet.
+    Usually the easiest is to physically connect them with an ethernet cable.
+    You may also connect them wirelessly using a router,
+    Using wireless will make it difficult to
+    use the Raspberry Pi in the classroom. All of the projects in
+    this course are submitted in a format that is buildable on these
+    environments. The examples we will be using are developed to
+    run (only) on these environments, and all classroom discussions will focus only on
+    these environments.
+    <br><br>
+    <ul>
+       <li><u><b>Development Environment</b>.</u>  If you don't have a machine
+      that boots into a Debian Stretch (9.x) Linux system, you will need to download,
+      install and configure a Debian Stretch (9.x) Linux system as a guest system on
+      <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Virtual Box</a>.
+      We will be installing <b>Java SE JDK 9, Ant,</b> and <b>GNU C++</b>
+      with some additional libraries for language. Here are
+      <a href="./buildVB.html" target="_blank">instructions for setting
+      up Virtual Box</a> and its guest Linux machine. You will be required to hand in programs
+      that you develop in a format similar to that used for open source software packages.
+      The course does not specify or utilize an integraded development environment, and the
+      format you must submit does not lend itself to using an IDE.
+      <br><br>
+      <li><u><b>Deployment Environment</b>.</u> Each student should
+      purchase and configure a <b>Raspberry Pi</b>. When you search, you'll find there
+      are 3 different models available. The least capable onto which you can load Raspbian
+      will work fine for the course. You should consider purchasing the most recent version since it may
+      be useful in subsequent courses. Don't plan to do development on the Raspberry
+          Pi. It is not capable enough to be a good development platform,
+          but it will work fine for building and running the server components.
+          Here's a typical parts list for the Raspberry Pi.<br><br>
+          <ul>
+            <li><b>Raspberry Pi</b>. The Raspberry Pi is
+            an inexpensive system on a chip computer. See the
+            <a href="https://en.wikipedia.org/wiki/Raspberry_Pi" target="_blank">
+            Raspberry Pi Wikipedia</a> page. <b>RPi 3 model B</b> has
+            1.2GHz 64-bit quad-core ARM processor with 1GB of onboard
+            RAM, but does not have a disk. Instead, it uses an SD
+            card (micro SD, depending on model).
+            The Raspberry Pi 3 B is available from Amazon with a case and wireless
+            adapter for about $50. You will also need the parts,
+            below, whether you buy them as a package, or otherwise have them.
+            </li><br>
+            <li><b>SB Raspberry Pi Case</b>.
+            Available for under $10.00.
+            The case is optional, but recommended.</li><br>
+            <li><b>C&E USB to MicroUSB cable</b>. Available from several sources
+            for a couple dollars. You may have one, as they are commonly
+            used for cameras and other digital devices.</li><br>
+            <li><b>5V 1A USB Port Power Supply</b>. This is available from
+            $3 to $10. This
+            is to plug the cable above into 110V AC wall outlet. On OSX,
+            if you have a laptop with USB version 3, then its USB ports provide
+            5V at 900mA. The Raspberry Pi Model B specs call for 700 mA. I've
+            powered my Raspberry Pi with a Mac USB2, which provides 5V 500mA,
+            with no problem, but I wouldn't connect any USB devices to the Pi's
+            USB ports and expect them to also be powered by a laptop's USB port.
+            If you have a laptop with USB3 then it
+            should (you should check the specifications of the laptop to be
+            sure) provide sufficient power for the Raspberry Pi.</li><br>
+            <li><b>3 ft of RJ45 Cat5e cable</b>. To bring the RPi to class,
+            please do NOT plan to connect it using ASU wireless.
+            Instead plan for a direct connect to your laptop. Plan to use
+            a short ethernet cable to connect your laptop to the Raspberry Pi.
+            Although ASU IT doesn't support it, your
+            laptop can provide internet access for the Raspberry Pi through the laptop's
+            wireless connection.
+            </li><br>
+            <li><b>SD Card</b>. You won't need more than 12GB for this
+            class and the faster the better. The Raspberry Pi boots from
+            the SD card and uses it as the disk for its file system.
+            Don't get an SD card that's pre-loaded with the Raspberry Pi
+            operating system. They don't come with the OS that we'll be using:
+            Raspberry Pi's Debian Stretch (9.x). Setup is straightforward.</li><br>
+         </ul>
+         Incase you are hesitant to buy a Raspberry Pi, you'll likely find
+         other uses for it besides this course. We won't be using any of the
+         IO capabilities of the device, but if you take either the sensors and
+         actuators course or the embedded C class, you'll likely make use of
+         your Raspberry Pi. You can also configure it with your TV for video
+         and audio playback, for emulating video games, as well as other useful
+         server tasks.</li><br>
+      </ul>
+</li><br>
+<li><b>Building the software system on your Raspberry Pi.</b> Our goal is to
+configure a Debian Stretch (9.x) Linux on the Raspberry Pi (often referred to as
+Raspbian) with a user account for you. Here are <a href="./buildRaspberry.html" target="_blank">
+references and directions</a> for setting up your Raspberry Pi.
+And, here is another
+<a href="http://www.toptal.com/raspberry-pi/how-to-turn-your-raspberry-pi-into-a-development-server">quick setup guide</a>.
+ <ul>
+  <li>While there are other options for the system running on Raspberry Pi, we
+      will be using <b>Debian Stretch (9.x)</b> (also called <b>Raspbian</b>) for Ser321. If you'd like to know more
+      about administering this Linux operating system get the Administrator's
+      handbook at
+   <a href="http://debian-handbook.info/" target="_blank">
+   http://debian-handbook.info/</a>
+   </li>
+ </ul>
+</li>
+<br>
+<li>See the <b>Java</b>, and <b>C++</b> references,
+as well as <b>Ant</b>, <b>Bash</b>, and <b>Command-Line Development</b>,
+links found on the
+<a href="http://pooh.poly.asu.edu/Ser502/Resources/tools.html"
+      target="_blank">Language Links and References for Basic Development</a> page.
+      </li>
+</UL>
+
+<img src="./bar_yellow.gif" height=4 width=90%></h1>
+<center>
+Email: <a href="mailto:Tim.Lindquist@asu.edu">Tim.Lindquist@asu.edu</a> | <a href="../index.html">Ser321 Home</a><br>
+</center>
+</body>
+</html>

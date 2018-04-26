@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dependencies>
+   <includePath signature="/I../../../../../usr/local/include /I../../../../../usr/include/jsoncpp">
+      <source file="../../src/cpp/client/waypointcollectionstub.h" lastModified="1629c3e7268">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/client.h"/>
+      </source>
+      <source file="../../../../../../../usr/local/include/jsonrpccpp/client/connectors/httpclient.h" lastModified="160c1540830">
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/client/iclientconnector.h"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/common/exception.h"/>
+      </source>
+      <source file="../../src/cpp/server/Waypoint.cpp" lastModified="162985fadb0">
+         <include file="../../src/cpp/server/Waypoint.hpp"/>
+         <sysinclude file="../../../../../../../usr/include/stdlib.h"/>
+         <sysinclude file="../../../../../../../usr/include/jsoncpp/json/json.h"/>
+      </source>
+      <source file="../../src/cpp/client/WaypointGUI.cpp" lastModified="16294d949f8">
+         <sysinclude file="../../../../../../../usr/include/FL/Fl.H"/>
+         <sysinclude file="../../../../../../../usr/include/FL/Fl_Window.H"/>
+         <sysinclude file="../../../../../../../usr/include/FL/Fl_Button.H"/>
+         <sysinclude file="../../../../../../../usr/include/FL/Fl_Output.H"/>
+         <sysinclude file="../../../../../../../usr/include/FL/Fl_Text_Display.H"/>
+         <sysinclude file="../../../../../../../usr/include/FL/Fl_Input_Choice.H"/>
+         <sysinclude file="../../../../../../../usr/include/FL/Fl_Multiline_Input.H"/>
+      </source>
+      <source file="../../src/cpp/server/Waypoint.hpp" lastModified="162985fc908">
+         <sysinclude file="../../../../../../../usr/include/jsoncpp/json/value.h"/>
+      </source>
+      <source file="../../src/cpp/client/WaypointApp.cpp" lastModified="162987b8698">
+         <include file="../../src/cpp/client/WaypointGUI.cpp"/>
+         <include file="../../src/cpp/server/Waypoint.hpp"/>
+         <include file="../../../../../../../usr/local/include/jsonrpccpp/client/connectors/httpclient.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/json.h"/>
+         <include file="../../src/cpp/client/waypointcollectionstub.h"/>
+         <sysinclude file="../../../../../../../usr/include/jsoncpp/json/json.h"/>
+      </source>
+      <source file="../../../../../../../usr/include/jsoncpp/json/json.h" lastModified="155d0ea0e80">
+         <include file="../../../../../../../usr/include/jsoncpp/json/autolink.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/value.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/reader.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/writer.h"/>
+         <include file="../../../../../../../usr/include/jsoncpp/json/features.h"/>
+      </source>
+   </includePath>
+</dependencies>

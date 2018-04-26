@@ -1,0 +1,66 @@
+<project name="Ser321 Assign3 C++ examples"
+         default="targets" basedir="."
+         xmlns="antlib:org.apache.tools.ant">
+    <taskdef resource="cpptasks.tasks"/>
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+    <property name="src" value="./src"/>
+    <property name="lib" value="./lib"/>
+    <property name="src.cpp.dir" value="src"/>
+    <property name="obj.dir" value="obj"/>
+    <property name="dist.dir" value="bin"/>
+    <property environment="env"/>
+
+    <target name="targets">
+        <echo message="targets are clean, prepare, build.cpp.client, execute.client, targets"/>
+        <echo message="execute waypoint cpp with: ./bin/Waypoint"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${obj.dir}" failonerror="false"/>
+        <delete dir="${dist.dir}" failonerror="false"/>
+    </target>
+
+    <target name="prepare">
+        <!-- Create the time stamp -->
+        <tstamp/>
+        <!-- Create the build directory structure used by compile -->
+        <echo message="home defined as: ${env.HOME}"/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${obj.dir}"/>
+        <if>
+            <isset property="env.USERNAME"/>
+            <then>
+                <echo message="detected username is: ${env.USERNAME}"/>
+            </then>
+            <elseif>
+                <isset property="env.USER"/>
+                <then>
+                    <echo message="detected user is: ${env.USER}"/>
+                </then>
+            </elseif>
+        </if>
+        <echo message="host name is: ${os.name}"/>
+        <echo message="host arch is: ${os.arch}"/>
+        <echo message="host version is: ${os.version}"/>
+        <echo message="base directory is: ${basedir}"/>
+    </target>
+
+    <target name="build.cpp.client" depends="prepare">
+        <cc outtype="executable" subsystem="console"
+            outfile="${dist.dir}/Waypoint"
+            objdir="${obj.dir}">
+            <compilerarg value="-std=c++11"/>
+            <includepath>
+                <dirset dir="/" includes="usr/include,usr/local/include,opt/local/include"/>
+            </includepath>
+            <libset dir="/usr/lib" libs="stdc++,fltk,jsoncpp,m"/>
+            <fileset dir="${src.cpp.dir}/cpp" includes="WaypointApp.cpp,WaypointGUI.cpp,Waypoint.cpp"/>
+        </cc>
+    </target>
+
+    <target name="execute.client" depends="build.cpp.client">
+        <exec executable="./bin/Waypoint"/>
+    </target>
+
+</project>

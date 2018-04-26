@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<project name="Ser321 Sample Assignment 2."
+         default="targets" basedir="."
+         xmlns="antlib:org.apache.tools.ant"
+         xmlns:cpptasks="antlib:net.sf.antcontrib.cpptasks">
+
+    <property name="src.dir" value="src/"/>
+    <property name="build" value="classes"/>
+    <property name="docs" value="doc"/>
+    <property environment="env"/>
+    <property name="user.name" value="${env.USERNAME}"/>
+
+    <target name="targets">
+        <echo message="Targets are clean, prepare, build.gui, build.waypoint, execute.gui, javadoc.jar and targets"/>
+        <echo message="os is: ${os.name}"/>
+    </target>
+
+    <path id="compile.classpath">
+        <pathelement location="${build}"/>
+        <pathelement location="lib/json.jar"/>
+    </path>
+
+    <target name="prepare">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${docs}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}" failonerror="false"/>
+        <delete dir="${docs}" failonerror="false"/>
+    </target>
+
+    <target name="build.gui" depends="prepare">
+        <javac srcdir="${src.dir}/waypoint"
+               includeantruntime="false"
+               destdir="${build}">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="build.waypoint" depends="prepare">
+        <echo message="execute with: java -cp classes Waypoint"/>
+        <javac srcdir="${src.dir}/waypoint"
+               includeantruntime="false"
+               destdir="${build}">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+    <target name="execute.gui" depends="build.gui"
+            description="Run the program">
+        <echo message="command line execute: java -cp classes waypoint.WaypointController"/>
+        <java classname="waypoint.WaypointController" fork="yes">
+            <classpath refid="compile.classpath"/>
+            <arg value="${user.name}"/>
+        </java>
+    </target>
+
+    <target name="javadoc.jar" depends="build.gui">
+        <javadoc
+                defaultexcludes="yes"
+                destdir="${docs}"
+                author="true"
+                version="true"
+                use="true"
+                windowtitle="Class WaypointGUI">
+            <classpath refid="compile.classpath"/>
+            <fileset dir="${basedir}" casesensitive="yes">
+                <include name="src/waypoint/WaypointGUI.java"/>
+            </fileset>
+        </javadoc>
+        <jar destfile="${basedir}/javadocWaypointGUI.jar">
+            <fileset dir="${basedir}/../"
+                     includes="Assign2/doc/*,Assign2/doc/*/*,Assign2/doc/*/*/*,Assign2/build.xml,Assign2/src/waypoint/WaypointGUI.java,Assign2/src/waypoint/WaypointController.java,Assign2/samples.txt"/>
+        </jar>
+    </target>
+
+</project>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="gcc noversion nomachine -std=c++14 -c -I../../../../../../usr/include -I../../../../../../usr/local/include">
+      <target file="GUI.o" lastModified="16179775070">
+         <source file="../src/sample/cpp/GUI.cpp" lastModified="1617974f2f8"/>
+      </target>
+      <target file="samplemain.o" lastModified="16179737810">
+         <source file="../src/sample/cpp/samplemain.cpp" lastModified="161480c09e0"/>
+      </target>
+      <target file="Controller.o" lastModified="16179775070">
+         <source file="../src/sample/cpp/Controller.cpp" lastModified="1617974f2f8"/>
+      </target>
+   </processor>
+   <processor signature="gcc noversion nomachine -std=c++11 -c -I../../../../../../usr/include -I../../../../../../usr/local/include">
+      <target file="WaypointGUI.o" lastModified="16190849ae8">
+         <source file="../src/cpp/WaypointGUI.cpp" lastModified="16190711ab8"/>
+      </target>
+      <target file="WaypointApp.o" lastModified="16192f76bc0">
+         <source file="../src/cpp/WaypointApp.cpp" lastModified="16192f6b428"/>
+      </target>
+      <target file="Waypoint.o" lastModified="16190849ae8">
+         <source file="../src/cpp/Waypoint.cpp" lastModified="161906dafb8"/>
+      </target>
+   </processor>
+</history>

@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Ser321 Build Virtual Box Debian Linux Guest</title>
+</head>
+<body bgcolor="#E0E0AF">
+<table border="2" width="100%">
+  <tr> 
+    <td height=95 width=23% bgcolor=#FFC20E> 
+      <div align=center><font size=6 color=#9B0033><b>Ser321</font></b></div>
+    </td>
+    <td height=95 width=77% class=TitleFont bgcolor=#9B0033> 
+      <div align=center><font size=6 color=#FFC20E><b>Principles of Distributed Software Systems</b></font></div>
+    </td>
+  </tr>
+</table>
+
+<H2><U>Configure Virtual Box and Debian Stretch (9.x) Linux
+</U></H2>
+<p>
+The goal is to configure <b>Debian Stretch</b> Linux operating system running
+under
+<a href="https://www.virtualbox.org/" target="_blank">Virtual Box</a>
+on your laptop or desktop computer. This platform will be used for program development
+for all of the exercises and examples of the course. All examples and assignment
+solutions have been created, compiled and executed on this platform.
+<ul>
+  <li><b>Download and Install Virtual Box</b>. Obtain the appropriate installation file
+  from
+  <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Virtual Box Downloads</a>. You will also want to download the appropriate extension pack which can also be found on the download page. Install Virtual Box using the downloaded installation file and following the directions for you host type found at:
+    <a href="https://www.virtualbox.org/manual/ch02.html" target="_blank">
+    https://www.virtualbox.org/manual/ch02.html</a>.
+  </li><br>
+  <li><b>Download the Linux Debian Installation CD Image</b>.
+  Download the first CD image of Debian 9.x (Stretch). See
+  <a href="https://www.debian.org/releases/stretch/" target="_blank">
+  https://www.debian.org/releases/stretch/</a> for release information.
+  The instructor's machine uses:
+  <b>debian-9.3.0-amd64-xfce-CD-1.iso</b> from the page
+  <a href="http://cdimage.debian.org/debian-cd/9.3.0/amd64/iso-cd/" target="_blank">
+  http://cdimage.debian.org/debian-cd/9.3.0/amd64/iso-cd/</a>. For the current Stretch release you may
+  need to start at:
+  <a href="http://cdimage.debian.org/debian-cd/" target="_blank">
+  http://cdimage.debian.org/debian-cd/</a>. If your are running on Windows, you may need to make changes
+  to enable 64-bit virtualization. See:
+  <ul>
+    <li><a href="https://forums.virtualbox.org/viewtopic.php?f=1&t=62339" target="_blank">
+    Virtual Box Forum: I have a 64-bit host, but can't install 64-bit guests</a>.</li>
+    <li><a href="https://h30434.www3.hp.com/t5/Desktop-Hardware-and-Upgrade-Questions/How-to-Enable-Intel-Virtualization-Technology-vt-x-on-HP/td-p/3198063" target="_blank">
+    HP: How to Enable Intel Virtualization Technology</a>.</li>
+  </ul>
+  </li><br>
+  
+  <li><b>Create the Virtual Machine</b>. Startup Virtual Box and under <b>Machine</b>
+  menu, select <b>New</b>. You will have to complete several options. Here are some
+  reasonable choices for completing the work in this class:<ul>
+  <li>1024 MB memory</li>
+  <li>Create a dynamically allocated Virtual Disk Image (VDI) with about 10 GB space.</li>
+  <li>Point to the iso image: <b>debian-9.3.0-amd64-xfce-CD-1.iso</b></li>
+  <li>Use your ASURiteID as the user name</li>
+  <li>Partition: guided using the entire disk</li>
+  <li>Partitioning Scheme: All files in 1 partition</li>
+  <li>Write To Disk: Yes</li>
+  <li>Network Mirror: Yes. Select one in the Western US.</li>
+  <li>Grub boot loader: Yes</li>
+  <li>Software to install: use the default, or another desktop environment if you wish.
+  We'll be installing other software as part of the course.</li>
+  </ul>
+  </li><br>
+  <li><b>Reboot or restart</b> with the installation CD removed. </li><br>
+  <li><b>Give your user administrative (sudo) privilege</b>.
+  After logging in with your asuriteid, start up an xterm terminal, and
+  as super-user (su) execute the adduser commands below and then restart.<br>
+  <b>su -<br>
+  apt-get install sudo<br>
+  adduser asuriteid sudo<br>
+  exit</b><br>
+  </li><br>
+  <li><b>Install Guest Additions.</b> To better integrate the guest Debian system with
+  your host operating system, install <b>VB Guest Additions</b>. Add guest additions by
+  loading the Guest Addtions CD and following directions found at:
+  <a href="https://www.virtualbox.org/manual/ch04.html" target="_blank">
+  https://www.virtualbox.org/manual/ch04.html</a>.
+  First you will need to add additional sofware to your Debian installation. Before doing
+  so, update the system with:<br>
+  <b>sudo apt-get  update<br>
+  sudo apt-get upgrade</b></br>
+  On my installs, I had to also install the following packages before Guest Additions:
+  <br><b>
+  sudo apt-get install dkms build-essential linux-headers-$(uname -r)<br></b>
+  Get VB to insert and mount the <b>Guest Additions CD</b>. <b>Devices-->Insert-Guest-Add...</b>
+  After the CD is mounted an icon appears on the desktop. (To remove a mounted CD, click the
+  CD icon at the bottom of VBox window.) Now open up a terminal and change to
+  the Guest Addtions CD with:<br><b>
+  cd /media/cdrom0<br>
+  ls -l <br>
+  sudo sh ./VBoxLinuxAdditions.run</b><br>
+  You will need to wait for the installation to complete. Its best to restart the machine after
+  installation with:<br>
+  <b>sudo shutdown -r now</b><br>
+  There are directions at:
+  <a href="https://www.turnkeylinux.org/docs/virtualbox-guest-addons" target="_blank">
+  https://www.turnkeylinux.org/docs/virtualbox-guest-addons</a>.<br></li><br>
+  <li><b>Install software</b>. Login as your user, and install desired software
+  packages using <b>apt-get</b>, such as:
+  <br><b>sudo apt-get install ant g++ libjsoncpp-dev libjsonrpccpp-dev</b><br>
+  This will install <b>Ant</b>,  <b>C++</b>, and Json support for <b>C++</b>.
+  To use <b>apt-get</b>, see:
+  <a href="./RaspberryPi/AptPackageManagerCommands.txt" target="_blank">
+  apt-get quick help</a>. At some point you should also install the following packages (if not already installed):
+  libfltk1.3-dev, git, ant-doc, ant-contrib, ant-contrib-cpptasks, emacs, vim, gedit, doxygen, and lxterminal.
+  Note that most of these packages also need to be installed on your Raspberry Pi in the same manner. On the
+  RPi, however, you do not need to install doxygen (documentation generator for C/C++),
+  lxterminal, or libfltk1.3-dev (full-light toolkit of UI components for C++).</li><br>
+
+  <li><b>Install java9.</b>
+  <ul>
+    <li>On the Raspberry Pi this can be installed with:<br>
+    <b>sudo apt-get install openjdk-9-jdk</b></li>
+    <li>To install it on VBox, use one of the following:
+    <ul>
+      <li>Use the Oracle packages made available through the
+      <b>WebUpd8 Oracle PPA</b> repository.
+       To make them visible to your VBox machine perform the commands below (which are
+      taken from 
+  <a href="http://www.webupd8.org/2015/02/install-oracle-java-9-in-ubuntu-linux.html" target="_blank">
+  Install Oracle 9</a>). From a terminal execute:<br>
+      <b>
+      su -<br>
+      echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list<br>
+      echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list<br>
+      apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886<br>
+      apt-get update<br>
+      exit</b><br>
+      Searching packages now will find the oracle java packages, for example:<b><br>
+      apt-cache search oracle | grep -i java9<br></b>
+      Now install <b>Oracle jdk9</b> with<br><b>
+      sudo apt-get install oracle-java9-installer</b></li><br>
+      <li>Or, Install <b>Oracle jdk9</b> manually by agreeing to the lincense and downloading the
+      Linux <b>tar.gz</b> archive from the
+      <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html" target="_blank">
+      Oracle Java SE Development Kit 9 Downloads</a> page.
+      Save the archive into your home directory. Extract it with:<br>
+      <b>tar zxvf jdk-9.0.4_linux-x64_bin.tar.gz</b><br>
+      Note that the file name above was current at the time this page was created and
+      will change with future releases of <b>jdk9</b>.
+      This will create the directory <b>jdk-9.0.4</b> in your home directory. To provide
+      bash with access to the <b>jdk9</b> tools execute (again from your home directory --
+      be sure to substitute your userid for myasuriteid in the line below):<br>
+      <b>cat >> .bashrc<br>
+      export PATH="/home/myasuriteid/jdk-9.0.4/bin:$PATH"<br>
+      ^C</b><br>
+      </li></li></ul></ul><br>
+
+  <li><b>Install optional software</b>. If you don't want to learn <b>emacs</b>, or
+  <b>vi</b>, then you may want to install <b>gedit</b>, which is a window-based
+  text editor that runs on Linux. Install with:<br>
+  <b>sudo apt-get install gedit</b><br>
+   One example we'll be
+  reading and running uses all of the following languages: <b>C, C++, Java, and C#</b>. You won't be
+  required to develop in either <b>C</b> or <b>C#</b>. You can get a full <b>C#</b> compiler and runtime with:<br><b>
+  sudo apt-get install mono-complete</b></li><br>
+  <li><b>Optionally Create a Share</b>. Provide access to your user files on your
+  host system. In Virtual Box, go to
+  <br><b>Devices-->Shared Folders Settings-->Shared Folders</b><br>
+  Add a new share to your home directory on the host file system.
+  On the instructor's system, the share is mounted in VB Linux with the shell command:
+  <br><b>sudo mount -t vboxsf -o rw,uid=1000,gid=1000 macHome ~/MacHome/</b><br></li><br>
+</ul>
+
+<hr>
+   <center>
+       Email: <a href="mailto:Tim.Lindquist@asu.edu">Tim.Lindquist@asu.edu</a> |
+              <a href="../index.html">Ser321 Home</a><br>
+   </center>
+<!-- hhmts start --> Last modified: Wed Feb 14 13:59:57 MST 2018 <!-- hhmts end -->
+</body> </html>

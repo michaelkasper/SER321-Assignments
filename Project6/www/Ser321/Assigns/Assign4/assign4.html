@@ -1,0 +1,133 @@
+<html>
+<head>
+<TITLE>Ser321 Assignment 4</TITLE>
+<BASE TARGET="_top">
+</head>
+<body bgcolor="#E0E0AF">
+<table border="2" width="100%">
+  <tr> 
+    <td height=95 width=23% bgcolor=#FFC20E> 
+      <div align=center><font size=6 color=#9B0033><b>Ser321</font></b></div>
+    </td>
+    <td height=95 width=77% class=TitleFont bgcolor=#9B0033> 
+      <div align=center><font size=6 color=#FFC20E><b>Principles of Distributed Software Systems</b></font></div>
+    </td>
+  </tr>
+</table>
+
+<h2>Assign4: Java RMI with Server on Raspberry Pi and Client on Virtual Box Linux
+</H2>
+
+<h3><font color=#9B0033>Due date as specified on the class Blackboard site.
+   </font></h3>
+<font color=#9B0033>Changes since distribution:
+<ul>
+  <li><b>none</b>.
+  </li>
+</ul>
+</font>
+
+<P><B><FONT SIZE=+1>Description</FONT></B>
+<p>
+The learning outcomes of this assignment are:
+<ol>
+<li>Ability to apply the distribution middleware framework <b>Java RMI</b>
+    to client-server distributed applications.
+</li>
+<li>Experience in configuring networking and system initialization for
+    a Linux-based minimal computer -- Raspberry Pi.
+</li>
+<li>Knowledge working with the <b>Ant</b> build tool and the command-line for
+    developing distributed applications.
+</li>
+</ol>
+<p>
+Before you start on this assignment, complete
+<b>Unit 6: Object-Based Client-Server Communications</b> as described
+in the course <a href="http://pooh.poly.asu.edu/Ser321/Schedule/schedule.html" target="_blank">
+detailed schedule</a>. This exercise is to demonstrate a distributed
+<b>Java RMI</b> application in which the server is running on <b>Raspberry Pi</b>,
+and the client is running on <b>Virtual Box Debian Jessie Linux</b>.
+<p>
+In this assignment you are to complete configuration of your <b>Raspberry Pi</b>
+computer with the <b>Raspbian</b> Linux system, and establish the ability
+to connect to the computer from your Virtual Box Linux system via <b>ssh</b>.
+You will demonstrate successful configuration of the system by submitting
+LXTerminal screen shots from your Virtual Box Linux system demonstrating
+two machine execution of a <b>Java RMI</b> example. The class web site has a
+page outlining how to <a href="http://pooh.poly.asu.edu/Ser321/Resources/buildRaspberry.html" target="_blank">
+Setup Raspberry Pi for Ser321</a>.
+<p>
+You are to submit this assignment as two LXTerminal screen shots. One for
+the server and the other for the client. Below is a description of each
+screen shot.
+<ul>
+  <li><b>Server</b>. Use the class example
+  <b>employee.jar</b> and copy it to the <b>Raspberry Pi</b>.
+  Use <b>ssh</b> to log onto the
+  <b>Raspberry Pi</b>. Extract the example jar file and change to the <b>Employee</b>
+  directory. Use the appropriate <b>Ant</b> command to start the server, be sure
+  to include in the <b>Ant</b> command line the definition of the <b>Raspberry Pi</b>
+  host name or IP and a port number to use for the <b>RMI Registry</b>. After the
+  server starts and registers itself with the registry return to the clients LXTerminal.
+  </li><br>
+  <li><b>Client</b>. On Virtual Box Linux, change to the folder containing the
+  <b>employee.jar</b> archive. Extract the archive using <b>jar</b>.
+  Change to the <b>Employee</b> folder.
+  Enter the appropriate <b>Ant</b> command to cause the client to build and execute.
+  Be sure to include command line definitions of the <b>hostId</b> and <b>regPort</b>
+  properties. The hostId should be the IP of the <b>Raspberry Pi</b> (same as used
+  for the server), and the port should also match the value used on the server
+  machine.</li><br>
+</ul>
+Below are sample screen shots of the instructors solution to this problem.<br><br>
+<center><img src="./RMIServer.png"  width=910 height=580></center><br><br>
+<center><img src="/Assigns/Assign4/RMIClient.png"  width=742 height=685></center><br>
+
+<P><B><FONT SIZE=+1>What To Hand-In</FONT></B>
+<p>
+
+Submit your solution as a Java archive file (jar) of the project directory
+<b>Assign4</b>. Place only the two screen shot files in the <b>Assign4</b> folder.
+Grading your project will be done by extracting the jar and examining
+the screen shots.
+Hand-in this program using the submission link for this assignment on the course Blackboard site.
+<p>
+When extracted, your solution jar file should create the directory
+<b>Assign4</b>
+with only your solution files as specified above. Create your jar file from
+a command line whose current working directory is <b>Assign4</b>'s
+parent directory. Execute the command:
+<br><center><font color=#9B0033>
+jar -cvf assign4myname.jar Assign4/
+</font></center><br>
+The instructors solution would be created and named as:
+<br><center><font color=#9B0033>
+jar -cvf assign4TimLindquist.jar Assign4/
+</font></center><br>
+Before you submit the jar file, please do the following:
+<ul>
+  <li>Check to assure your solution conforms to the directions on this page.</li><br>
+  <li>Consider the grading criteria as shown below to be sure that you'll
+  receive full credit for your submission.
+  Of 20 possible points, they are awarded for:
+  <ol> 
+    <li>Server screen shot follows the directions specified above and the
+    employee RMI server runs properly on your Raspberry Pi (10 points).</li><br>
+    <li>Client screen shot follows the directions specified above and the
+    employee RMI client runs properly on your Virtual Box Linux system (10 points).
+    </li><br>
+  </ol></li>
+  <li>Clean your solution directory of any temporary files
+      before creating the jar file. Extract the solution
+      in another directory, build and execute the solution to be certain
+      it works properly.
+</ul>
+
+<hr>
+
+<center>
+Email: <a href="mailto:Tim.Lindquist@asu.edu">Tim.Lindquist@asu.edu</a> | <a href="http://pooh.poly.asu.edu/Ser321/index.html">Ser321 Home</a><br>
+</center>
+</body>
+</html>

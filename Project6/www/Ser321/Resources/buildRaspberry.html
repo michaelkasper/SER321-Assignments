@@ -1,0 +1,178 @@
+<html>
+<head>
+<title>Ser321 Build Raspberry Pi</title>
+</head>
+<body bgcolor="#E0E0AF">
+<table border="2" width="100%">
+  <tr> 
+    <td height=95 width=23% bgcolor=#FFC20E> 
+      <div align=center><font size=6 color=#9B0033><b>Ser321</font></b></div>
+    </td>
+    <td height=95 width=77% class=TitleFont bgcolor=#9B0033> 
+      <div align=center><font size=6 color=#FFC20E><b>Principles of Distributed Software Systems</b></font></div>
+    </td>
+  </tr>
+</table>
+
+<H2><U>Configure Raspberry Pi for Deploying Example and Homework Servers
+</U></H2>
+<p>
+The goal is to configure <b>Debian Stretch (9.x)</b> Linux operating system on
+the Raspberry Pi (called Raspbian) and intialize its networking through a direct ethernet
+connection to your laptop. These steps allow
+you to access the Raspberry Pi without a keyboard or display attached to
+the Raspberry Pi. Infact without anything attached except for the SD card,
+ethernet cable, and power cable. We'll access it by <b>ssh</b> from
+a command prompt running on your development machine. Here are the steps.
+<ul>
+   <li>
+      <b>The OS Image for Debian Stretch (9.x) (full).</b> Download the <b>RASPBIAN</b> zip
+      image file from <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank">
+      Raspberry Pi Raspbian Downloads</a>. Extract the zip file to get
+      the <b>.img</b> file. Make a note of the path to the image file.
+   </li><br>
+   <li><b>Write the OS Image to an SD Card</b>.
+      <ul>
+         <li><b>Easy Setup</b>. See:
+            <a href="http://elinux.org/RPi_Easy_SD_Card_Setup" target="_blank">
+            http://elinux.org/RPi_Easy_SD_Card_Setup</a>
+            for setup from either <b>Windows</b> or <b>Mac OS X</b>.</li><br>
+         <li><b>MacOS</b>. Alternatively, you will also find directions on the
+            <a href="http://www.raspberrypi.org/documentation/installation/installing-images/mac.md" target="_blank">
+            Raspberry Pi Documentation Page</a>.</li></br>
+         <li><b>Windows</b>. Alternatively, follow the directions on the
+            <a href="http://www.raspberrypi.org/documentation/installation/installing-images/windows.md" target="_blank">
+            Raspberry Pi Documentation Page</a>.</li>
+      </ul>
+   </li><br>
+   <li>If you downloaded and wrote the <b>Rasbian Stretch with desktop</b> version to your <b>SD</b>
+   card, and you plan to access it headless (remotely -- you don't plan to hook up a
+   keyboard and monitor) then you will need to follow the directions at:
+   <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=191252" target="_blank">
+   https://www.raspberrypi.org/forums/viewtopic.php?t=191252</a>.
+   Doing so, you will place a file named <b>ssh</b> in the boot <b>SD</b> disk before you
+   startup the <b>Raspberry Pi</b>. Such as the following MacOS terminal command immediately
+   after writing the image to the <b>SD</b>:
+   <b><br>
+   cat > /Volumes/boot/ssh<br>
+   ^C<br></b></li><br>
+   <li><b>Configure the Laptop to Share a Wireless Connection</b>.
+   With a direct ethernet connection (cable), the Rasbperry Pi can be configured by
+   default to receive an IP address through
+   <b>DHCP (Dynamic Host Configuration Protocol)</b> running on a laptop.
+   DHCP is used to
+   dynamically distribute network configuration parameters, such as IP
+   addresses. With a direct ethernet connection between a laptop and
+   Raspberry Pi, you can easily configure the laptop to share its wireless
+   connection with your <b>RPi</b>.
+   Connect the Raspberry Pi to your laptop by an ethernet cable
+   (Cat5e cable), before powering on the Raspberry Pi follow the directions below:
+      <ul>
+        <li><b>MacOS</b>. On <b>MacOS</b>, open up
+        <b>System Preferences --> Sharing</b>. Select the line for
+        <b>Internet Sharing</b> and select to share your <b>Wi-Fi</b>
+        connection to computers using <b>Ethernet (or Thunderbolt Bridge)</b>.
+        Then check the
+        <b>Internet Sharing</b> service <b>On</b> box to start the
+        service.</li><br>
+      </ul><p>
+   <li><b>Startup the Raspberry Pi</b>. Insert the SD card into the
+      Raspberry Pi. Using a normal ethernet cable, connect the Raspberry
+      Pi to a MacOS compututer. Or, if you are using Windows, you may need to
+      connect a keyboard and display to the Raspberry Pi to configure its networking
+      after it starts up. By direct connect MacOS, you may avoid using a keyboard
+      and display by using a terminal (either in the VB Linux or MacOS).
+      <br>
+      <ul>
+      <li>On MacOS, run the <b>Terminal</b> app which you will find under<br><b>
+         Applications --> Others or Applications --> Utilites
+      </b><br>
+      Run the <b>Terminal</b> app. <br>
+      <li>In the terminal, enter:<br><b>
+      ssh  pi@192.168.2.2</b></br>
+        The password is: <b>raspberry</b>. <br><b>Note</b>: You may need to try
+        different ip's.
+        On MacOS, you can find what IPs your <b>dhcp</b> server has allocated with the
+        following command:<br>
+        <b>sudo cat /private/var/db/dhcpd_leases</b><br>
+        If you're not successful finding the correct IP,
+        connect a monitor and keyboard to the pi. Power up again, and
+        configure it from the desktop. You can find its ip(s) from the command line,
+        with: <b>ifconfig -a</b><br>
+        After successfully logging in, you should change the password for the user
+        <b>pi</b> with the command:<br>
+        <b>sudo passwd pi</b><br>
+        the system will prompt you for the current and new passwords.</li>
+      <li>Now add yourself as a user. Be sure
+      to substitute your <b>asuriteid</b> everywhere below for
+      <b>myasuriteid</b>.
+      Some homework submissions will require screen shots that show
+        RPi terminal sessions for your <b>asuriteid</b>.
+        <br>Add a user who's login is <b>myasuriteid</b>. In doing
+      so indicate you want your user's directory to be <b>/home/myasuriteid</b>,
+      that you want to execute bash when logging in remotely, and that
+      your user should be in the <b>pi</b> group. Create the user with:<br><b>
+      sudo adduser --home /home/myasuriteid --shell /bin/bash --ingroup pi myasuriteid</b><br>
+      For example, you may enter:<br><b>
+      sudo adduser --home /home/jimsmith --shell /bin/bash --ingroup pi jimsmith</b><br></li>
+      <li>You can (re)set the password for the new user with:<b><br>
+      sudo passwd myasuriteid</b><br>
+      And, enter the information as requested.<br></li>
+      <li>To provide the new user with
+      root (sudo) privileges you must: Either execute<br><b>
+      sudo adduser myasuriteid sudo<br>
+      </b></li>
+      <li>Now reboot and log in using your userId. There are few more steps you should complete before
+      loading software. First update your system with changes since the
+      distribution of the installation CD. To do so, your system needs to be
+      connected to the internet, which it probably already is:<br><b>
+      sudo apt-get update<br>
+      sudo apt-get upgrade<br></b>
+      This may take some time, and you will probably need to reboot and
+      reconnect (login) after the upgrade completes.
+      Now, you should complete the configuration of <b>Raspbian</b>
+      by entering:<br><b>
+      sudo raspi-config<br></b>
+      Select <b>Advanced Options --> Expand Filesystem</b> so the entire <b>SD</b> card will be used. There
+      may be other settings you would like to make, such as setting the systems hostname.
+      Under <b>Localisation Options</b> remove locale <b>en_GB...</b> by pressing space
+      bar, and add <b>en_US.UTF-8 UTF-8</b> again by pressing the space bar then
+      tabbing to <b>OK</b>.
+      <li>When you are done with a session on the RPi, instead of exiting (<b>exit</b>)
+      from the RPi shell, you may want to halt or reboot your system.
+      Do so by entering:<br><b>
+      sudo shutdown -h now<br></b>
+      Which will shutdown the linux system gracefully and automatically log
+      you off of the system. You can replace <b>-h</b> (halt) with <b>-r</b> to
+      cause your RPi to reboot.</li></ul></li><br>
+      <li><b>Configuring Wireless on Raspberry Pi</b>. Instead of (or in addition to)
+      a direct ethernet connection to the <b>RPi</b>, a wireless
+      connection maybe appropriate. Here
+      are two references: Configuring 
+      <a href="https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md"
+      target="_blank">Wifi from the command line</a>, Debian Wiki
+      <a href="https://wiki.debian.org/WiFi/HowToUse" target="_blank">How to Use WIFI</a>.
+      </li><br>
+      <li><b>Adding packages to the RPi</b>. If your <b>RPi</b> is able to
+      access the internet through wireless or your laptop, then you can use the
+      <b>apt-get</b> package manager to install other software.
+      You will need the same packages on your Raspberry Pi as on VirtualBox except the
+      GUI packages (<b>FLTK</b>).<br>
+      See <a href="RaspberryPi/AptPackageManagerCommands.txt" target="_blank">
+      AptPackageManagerCommands.txt</a> for a quick overview of package
+      management with <b>apt-get</b> and <b>aptitude</b>.</li><br>
+      <li><b>Retro-Video Games</b>. There are lots of fun projects for your Pi.
+      If you are into video games, you may be interested in installing
+      <a href="https://retropie.org.uk/" target="_blank">Retro-Pie</a> on your
+      Raspberry Pi. <b>This is NOT required for the course.</b> To do so see:
+      <a href="https://retropie.org.uk/docs/Manual-Installation/" target="_blank">InstallRetro-Pie On Raspbian</a>.
+      </li>
+</ul>
+
+<hr>
+   <center>
+       Email: <a href="mailto:Tim@asu.edu">Tim@asu.edu</a> |
+              <a href="../index.html">Ser321 Home</a><br>
+   </center>
+</body>
+</html>
