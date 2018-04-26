@@ -22,6 +22,9 @@
 
     <path id="compile.classpath">
         <pathelement location="${classes.dir}"/>
+        <fileset dir="${basedir}/lib">
+            <include name="json.jar"/>
+        </fileset>
     </path>
 
     <target name="clean">
